@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Interview Prep | JobPilot AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#424754",
+                        "on-primary-fixed": "#001a42",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "surface-container-highest": "#dae2fd",
+                        "tertiary-fixed": "#71f8e4",
+                        "surface-bright": "#faf8ff",
+                        "on-secondary-container": "#fffbff",
+                        "on-tertiary-fixed": "#00201c",
+                        "primary-fixed": "#d8e2ff",
+                        "error-container": "#ffdad6",
+                        "primary": "#0058be",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-surface": "#131b2e",
+                        "tertiary": "#00685d",
+                        "on-secondary": "#ffffff",
+                        "background": "#faf8ff",
+                        "inverse-primary": "#adc6ff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#23005c",
+                        "primary-container": "#2170e4",
+                        "secondary": "#6b38d4",
+                        "on-background": "#131b2e",
+                        "surface-variant": "#dae2fd",
+                        "surface-tint": "#005ac2",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#faf8ff",
+                        "on-tertiary-container": "#f4fffb",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#d2d9f4",
+                        "surface-container": "#eaedff",
+                        "secondary-container": "#8455ef",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#008376",
+                        "inverse-surface": "#283044",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "outline": "#727785",
+                        "outline-variant": "#c2c6d6",
+                        "secondary-fixed": "#e9ddff",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-primary-container": "#fefcff",
+                        "surface-container-low": "#f2f3ff",
+                        "inverse-on-surface": "#eef0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "xl": "48px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "2xl": "80px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "label-sm": ["Geist"],
+                        "headline-lg-mobile": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .agent-pulse {
+            animation: pulse-glow 2s infinite ease-in-out;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+            50% { opacity: 0.7; transform: scale(1.1); box-shadow: 0 0 0 8px rgba(59, 130, 246, 0); }
+        }
+        .scroll-hide::-webkit-scrollbar { display: none; }
+        .scroll-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant/50 flex flex-col p-md space-y-sm z-40 hidden md:flex">
+<div class="mb-lg px-md">
+<h1 class="font-headline-md text-headline-md text-primary font-bold">JobPilot AI</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Interview Coach</p>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="flex items-center gap-sm p-md text-on-surface-variant hover:bg-surface-variant/80 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-label-md text-label-md">Jobs</span>
+</a>
+<a class="flex items-center gap-sm p-md text-on-surface-variant hover:bg-surface-variant/80 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-md text-label-md">Resume</span>
+</a>
+<a class="flex items-center gap-sm p-md text-on-surface-variant hover:bg-surface-variant/80 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">view_kanban</span>
+<span class="font-label-md text-label-md">Tracker</span>
+</a>
+<a class="flex items-center gap-sm p-md bg-primary-container text-on-primary-container font-semibold rounded-lg translate-x-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="font-label-md text-label-md">Coach</span>
+</a>
+</nav>
+<div class="mt-auto space-y-xs">
+<button class="w-full flex items-center justify-center gap-sm py-md bg-primary text-on-primary rounded-xl font-label-md text-label-md mb-lg hover:brightness-110 transition-all">
+<span class="material-symbols-outlined">add</span>
+<span>New Search</span>
+</button>
+<a class="flex items-center gap-sm p-md text-on-surface-variant hover:bg-surface-variant/80 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-sm p-md text-on-surface-variant hover:bg-surface-variant/80 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="md:ml-64 p-gutter max-w-container-max mx-auto pb-2xl">
+<!-- Header & Primary CTA -->
+<header class="flex flex-col md:flex-row md:items-center justify-between gap-lg mb-xl">
+<div>
+<div class="flex items-center gap-xs mb-xs">
+<span class="agent-pulse w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Coach Active</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Interview Readiness</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">You're in the top 15% of candidates for your current applications.</p>
+</div>
+<button class="bg-primary text-on-primary px-lg py-md rounded-xl font-label-md text-label-md shadow-lg shadow-primary/20 flex items-center gap-md hover:scale-[1.02] active:scale-95 transition-all">
+<span class="material-symbols-outlined">record_voice_over</span>
+<span>Start Mock Interview</span>
+</button>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Performance Analytics Widget -->
+<section class="lg:col-span-4 glass-card p-lg rounded-xl flex flex-col gap-lg">
+<div class="flex items-center justify-between">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">AI Feedback</h3>
+<span class="material-symbols-outlined text-outline">analytics</span>
+</div>
+<div class="flex-1 flex flex-col justify-center gap-xl">
+<!-- Score Rings -->
+<div class="grid grid-cols-3 gap-md text-center">
+<div class="flex flex-col items-center gap-sm">
+<div class="relative w-16 h-16 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-surface-variant" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-primary" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="175" stroke-dashoffset="35" stroke-width="4"></circle>
+</svg>
+<span class="absolute font-headline-sm text-on-surface">82</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Clarity</span>
+</div>
+<div class="flex flex-col items-center gap-sm">
+<div class="relative w-16 h-16 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-surface-variant" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-secondary" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="175" stroke-dashoffset="52" stroke-width="4"></circle>
+</svg>
+<span class="absolute font-headline-sm text-on-surface">74</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Confidence</span>
+</div>
+<div class="flex flex-col items-center gap-sm">
+<div class="relative w-16 h-16 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-surface-variant" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-tertiary" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="175" stroke-dashoffset="18" stroke-width="4"></circle>
+</svg>
+<span class="absolute font-headline-sm text-on-surface">91</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Content</span>
+</div>
+</div>
+<div class="bg-surface-container-high/50 p-md rounded-lg">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Coach Tip</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Try to reduce the use of filler words like "um" and "basically" to improve your clarity score.</p>
+</div>
+</div>
+</section>
+<!-- Upcoming Mock Interviews -->
+<section class="lg:col-span-8 flex flex-col gap-md">
+<div class="flex items-center justify-between px-xs">
+<h3 class="font-headline-md text-headline-md text-on-surface">Upcoming Sessions</h3>
+<button class="text-primary font-label-md text-label-md hover:underline">View Calendar</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Session Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 p-lg rounded-xl flex flex-col gap-md hover:border-primary/50 transition-colors group">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-lg bg-surface-variant flex items-center justify-center overflow-hidden">
+<img alt="Stripe" class="w-8 h-8 object-contain" data-alt="The minimalist and sleek vector logo of Stripe, the financial technology company, featuring the iconic wordmark in a vibrant purple shade against a clean, white background in a professional tech environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuY-o4yo2mio9Z2HVU9_nKQfHgcpKE3HVEMWq5C2v6bezc3xGbGih2BDsZzb4b9JE-uvWREguD3KzOcxF0m5RIgS6O1-CnVLhYOstXFwpv3UXj_vjIcTJGY1TVocE-u8MEX1pjd9Oow8_9L9HLNFjYsKgu3kye6TIHxJTa7TbW9w4dT31CKH4h45mRKH76cIouQpdP8M0W0Gw3fkgxM5IN0IeShEhthd-cpPfsaEuwHM8YOI3DBNZwIF2HqPLRtKXkmUm6DW5IoV4"/>
+</div>
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-sm py-xs rounded-full font-label-sm text-label-sm">High Priority</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg font-bold text-on-surface">Senior Product Engineer</h4>
+<p class="text-on-surface-variant font-body-sm text-body-sm">Stripe • Behavioral Round</p>
+</div>
+<div class="flex items-center gap-lg mt-auto text-on-surface-variant">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span class="text-label-sm font-label-sm">Tomorrow</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-label-sm font-label-sm">10:30 AM</span>
+</div>
+</div>
+</div>
+<!-- Session Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 p-lg rounded-xl flex flex-col gap-md hover:border-primary/50 transition-colors group">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-lg bg-surface-variant flex items-center justify-center overflow-hidden">
+<img alt="Linear" class="w-8 h-8 object-contain" data-alt="The sophisticated and modern monochrome logo for Linear, a software development tool, showcasing its clean geometric design and high-contrast black and white aesthetic within a professional digital dashboard context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5UYXH2m2IKJ9_xfG8hyu48gUHvKh3Bnw3zrpaKwre4I1PqYLyiEDZAsXWLDf_Ga3tM24uqJHMaWkCovZ69cGbRiBsi9FPC_B3otv0u6FjQ6ZSm96jTh1jVNSNVxOEuude8NIeGMT_B4GoB-uTr-GwO--xb8wTbT9RUQg2Ih3MAE32HUOJbXsEluXRdjgnWotN0ZI6nkNzzVwQ03tsNbkB0R_rtiNgP1UjnHEDdx76zIf7B3GYGvLfI92gEv-lrwdTeRgCrcaTeKU"/>
+</div>
+<span class="bg-tertiary-container/20 text-on-tertiary-container px-sm py-xs rounded-full font-label-sm text-label-sm">Technical</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg font-bold text-on-surface">Full Stack Developer</h4>
+<p class="text-on-surface-variant font-body-sm text-body-sm">Linear • System Design</p>
+</div>
+<div class="flex items-center gap-lg mt-auto text-on-surface-variant">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span class="text-label-sm font-label-sm">Wed, Oct 24</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-label-sm font-label-sm">2:00 PM</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Question Banks -->
+<section class="lg:col-span-12 grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Technical Question Bank -->
+<div class="flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">code</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Technical Bank</h3>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">124 Questions</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden">
+<div class="p-md hover:bg-surface-container-low transition-colors border-b border-outline-variant/20 flex items-center justify-between group cursor-pointer">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">Explain Big O Notation in the context of sorting.</span>
+<div class="flex gap-sm mt-xs">
+<span class="text-[10px] uppercase font-bold text-primary bg-primary/10 px-xs py-0.5 rounded">Algorithms</span>
+<span class="text-[10px] uppercase font-bold text-error bg-error/10 px-xs py-0.5 rounded">Hard</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward_ios</span>
+</div>
+<div class="p-md hover:bg-surface-container-low transition-colors border-b border-outline-variant/20 flex items-center justify-between group cursor-pointer">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">How do closures work in JavaScript?</span>
+<div class="flex gap-sm mt-xs">
+<span class="text-[10px] uppercase font-bold text-primary bg-primary/10 px-xs py-0.5 rounded">JavaScript</span>
+<span class="text-[10px] uppercase font-bold text-tertiary bg-tertiary/10 px-xs py-0.5 rounded">Medium</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward_ios</span>
+</div>
+<div class="p-md hover:bg-surface-container-low transition-colors flex items-center justify-between group cursor-pointer">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">Describe the CAP theorem for distributed systems.</span>
+<div class="flex gap-sm mt-xs">
+<span class="text-[10px] uppercase font-bold text-primary bg-primary/10 px-xs py-0.5 rounded">System Design</span>
+<span class="text-[10px] uppercase font-bold text-error bg-error/10 px-xs py-0.5 rounded">Expert</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward_ios</span>
+</div>
+</div>
+</div>
+<!-- HR Question Bank -->
+<div class="flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">forum</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">HR Question Bank</h3>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">86 Questions</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden">
+<div class="p-md hover:bg-surface-container-low transition-colors border-b border-outline-variant/20 flex items-center justify-between group cursor-pointer">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">Tell me about a time you handled a conflict.</span>
+<div class="flex gap-sm mt-xs">
+<span class="text-[10px] uppercase font-bold text-secondary bg-secondary/10 px-xs py-0.5 rounded">Conflict</span>
+<span class="text-[10px] uppercase font-bold text-primary bg-primary/10 px-xs py-0.5 rounded">STAR Method</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors">arrow_forward_ios</span>
+</div>
+<div class="p-md hover:bg-surface-container-low transition-colors border-b border-outline-variant/20 flex items-center justify-between group cursor-pointer">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">Why do you want to join this company?</span>
+<div class="flex gap-sm mt-xs">
+<span class="text-[10px] uppercase font-bold text-secondary bg-secondary/10 px-xs py-0.5 rounded">Culture</span>
+<span class="text-[10px] uppercase font-bold text-primary bg-primary/10 px-xs py-0.5 rounded">Research</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors">arrow_forward_ios</span>
+</div>
+<div class="p-md hover:bg-surface-container-low transition-colors flex items-center justify-between group cursor-pointer">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">Where do you see yourself in five years?</span>
+<div class="flex gap-sm mt-xs">
+<span class="text-[10px] uppercase font-bold text-secondary bg-secondary/10 px-xs py-0.5 rounded">Growth</span>
+<span class="text-[10px] uppercase font-bold text-tertiary bg-tertiary/10 px-xs py-0.5 rounded">Standard</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors">arrow_forward_ios</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Mobile Bottom NavBar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-surface border-t border-outline-variant/20 flex justify-around items-center h-16 md:hidden z-50 px-md">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="text-[10px] font-label-sm">Jobs</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-[10px] font-label-sm">Resume</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">view_kanban</span>
+<span class="text-[10px] font-label-sm">Tracker</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="text-[10px] font-label-sm">Coach</span>
+</a>
+</nav>
+<!-- Footer -->
+<footer class="md:ml-64 bg-surface-dim border-t border-outline-variant/20 w-full py-xl mt-auto">
+<div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-lg">
+<div class="flex flex-col items-center md:items-start gap-xs">
+<span class="text-headline-sm font-headline-sm font-bold text-primary">JobPilot AI</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 JobPilot AI. All rights reserved.</p>
+</div>
+<div class="flex gap-lg">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface underline underline-offset-4 opacity-80 hover:opacity-100 transition-all" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface underline underline-offset-4 opacity-80 hover:opacity-100 transition-all" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface underline underline-offset-4 opacity-80 hover:opacity-100 transition-all" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.classList.add('scale-95');
+            });
+            el.addEventListener('mouseup', () => {
+                el.classList.remove('scale-95');
+            });
+            el.addEventListener('mouseleave', () => {
+                el.classList.remove('scale-95');
+            });
+        });
+
+        // Simple animation logic for ring scores could go here
+        // Currently handled by static stroke-dashoffset for simplicity and reliability
+    </script>
+</body></html>

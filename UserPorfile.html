@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Profile - JobPilot AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#424754",
+                        "on-primary-fixed": "#001a42",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "surface-container-highest": "#dae2fd",
+                        "tertiary-fixed": "#71f8e4",
+                        "surface-bright": "#faf8ff",
+                        "on-secondary-container": "#fffbff",
+                        "surface-container-high": "#e2e7ff",
+                        "on-tertiary-fixed": "#00201c",
+                        "primary-fixed": "#d8e2ff",
+                        "error-container": "#ffdad6",
+                        "primary": "#0058be",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-surface": "#131b2e",
+                        "tertiary": "#00685d",
+                        "on-secondary": "#ffffff",
+                        "background": "#faf8ff",
+                        "inverse-primary": "#adc6ff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#23005c",
+                        "primary-container": "#2170e4",
+                        "secondary": "#6b38d4",
+                        "on-background": "#131b2e",
+                        "surface-variant": "#dae2fd",
+                        "surface-tint": "#005ac2",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#faf8ff",
+                        "on-tertiary-container": "#f4fffb",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#d2d9f4",
+                        "surface-container": "#eaedff",
+                        "secondary-container": "#8455ef",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#008376",
+                        "inverse-surface": "#283044",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "outline": "#727785",
+                        "outline-variant": "#c2c6d6",
+                        "secondary-fixed": "#e9ddff",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-primary-container": "#fefcff",
+                        "surface-container-low": "#f2f3ff",
+                        "inverse-on-surface": "#eef0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "xl": "48px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "2xl": "80px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "label-sm": ["Geist"],
+                        "headline-lg-mobile": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid #E2E8F0;
+        }
+        .agent-pulse {
+            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c2c6d6; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-md shadow-sm border-b border-outline-variant/30">
+<div class="flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto">
+<div class="text-headline-md font-headline-md font-bold text-primary">JobPilot AI</div>
+<div class="hidden md:flex space-x-lg">
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors duration-200" href="#">Features</a>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors duration-200" href="#">Pricing</a>
+<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors duration-200" href="#">About</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="px-md py-sm font-label-md text-label-md text-on-surface hover:bg-primary/5 rounded-lg transition-all">Login</button>
+<button class="px-md py-sm font-label-md text-label-md bg-primary text-on-primary rounded-lg shadow-sm hover:scale-95 transition-transform">Get Started</button>
+</div>
+</div>
+</nav>
+<div class="flex pt-16">
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden lg:flex h-[calc(100vh-64px)] w-64 fixed left-0 top-16 bg-surface-container-low border-r border-outline-variant/50 flex-col p-md space-y-sm overflow-y-auto">
+<div class="px-md py-sm">
+<div class="text-primary font-headline-sm text-headline-sm">JobPilot AI</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider opacity-60">Dashboard</div>
+</div>
+<div class="flex flex-col space-y-xs pt-md">
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-all group" href="#">
+<span class="material-symbols-outlined text-primary">work</span>
+<span class="font-label-md text-label-md">Jobs</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-all group" href="#">
+<span class="material-symbols-outlined text-primary">description</span>
+<span class="font-label-md text-label-md">Resume</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-all group" href="#">
+<span class="material-symbols-outlined text-primary">view_kanban</span>
+<span class="font-label-md text-label-md">Tracker</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-all group" href="#">
+<span class="material-symbols-outlined text-primary">smart_toy</span>
+<span class="font-label-md text-label-md">Coach</span>
+</a>
+</div>
+<div class="mt-auto flex flex-col space-y-xs">
+<button class="w-full bg-primary-container text-on-primary-container font-semibold rounded-lg p-md flex items-center gap-md mb-md translate-x-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</button>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-all group" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-all group" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-64 min-h-screen bg-surface">
+<div class="max-w-4xl mx-auto px-gutter py-xl">
+<!-- Profile Header -->
+<header class="flex flex-col md:flex-row items-center md:items-end gap-lg mb-2xl">
+<div class="relative">
+<img alt="User Profile" class="w-32 h-32 rounded-2xl object-cover border-4 border-surface shadow-lg" data-alt="A professional close-up portrait of a modern software engineer in a bright, minimalist studio setting. Soft, cinematic lighting highlights their confident expression, reflecting the clean, high-performance aesthetic of the JobPilot AI brand. The background is a soft, out-of-focus tech environment with subtle blue and white tones, maintaining a premium and intelligent visual identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOtCXxr2YU7CAI_BRcW-hC5Gn9I6ZTsd1NVfD1TZSu064U5FUS8yKUMBGKX27UNrsHc5TwEjHU1nGaJmQP8R955Ig-QjK9fy9CHeNSHnHJqptoIsPHMOT0NbpijvbWohSPknJaIPglsClCBB0157vJtvDCMsbrZSgJWTp_t_oyH4tp2_F_vxNGFWGyM-EVtURwcriuU6nBHjDesVb_fdcjjqW3kgLSFEf5q2IbaF36LP-eF7ex1_Q5fWmgPTsdeUmlmtxtnu9Aky8"/>
+<div class="absolute -bottom-2 -right-2 w-8 h-8 bg-primary rounded-full border-4 border-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">edit</span>
+</div>
+</div>
+<div class="text-center md:text-left flex-1">
+<div class="flex items-center justify-center md:justify-start gap-sm mb-xs">
+<h1 class="font-headline-lg text-headline-lg">Alex Chen</h1>
+<div class="flex items-center gap-xs px-sm py-xs bg-primary/10 rounded-full">
+<div class="w-2 h-2 bg-primary rounded-full agent-pulse"></div>
+<span class="font-label-sm text-label-sm text-primary">Pro Member</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg">Senior Full-stack Engineer specializing in React, Node.js, and Distributed Systems. Active in the Bay Area job market.</p>
+</div>
+<button class="px-lg py-md bg-surface border border-outline-variant rounded-xl font-label-md text-label-md hover:bg-surface-variant/20 transition-all flex items-center gap-sm">
+<span class="material-symbols-outlined">share</span>
+                        Share Profile
+                    </button>
+</header>
+<!-- Profile Tabs -->
+<div class="flex overflow-x-auto pb-xs mb-lg border-b border-outline-variant/30 scrollbar-hide">
+<nav class="flex gap-lg">
+<button class="tab-btn active border-b-2 border-primary text-primary font-semibold font-label-md text-label-md py-md px-sm whitespace-nowrap" onclick="switchTab(this, 'personal')">Personal Info</button>
+<button class="tab-btn text-on-surface-variant hover:text-on-surface font-label-md text-label-md py-md px-sm whitespace-nowrap" onclick="switchTab(this, 'skills')">Skills</button>
+<button class="tab-btn text-on-surface-variant hover:text-on-surface font-label-md text-label-md py-md px-sm whitespace-nowrap" onclick="switchTab(this, 'resume')">Resume Management</button>
+<button class="tab-btn text-on-surface-variant hover:text-on-surface font-label-md text-label-md py-md px-sm whitespace-nowrap" onclick="switchTab(this, 'social')">Social Links</button>
+<button class="tab-btn text-on-surface-variant hover:text-on-surface font-label-md text-label-md py-md px-sm whitespace-nowrap" onclick="switchTab(this, 'subscription')">Subscription</button>
+</nav>
+</div>
+<!-- Tab Content: Personal Info (Active by Default) -->
+<div class="tab-content space-y-lg" id="personal">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant">Full Name</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl px-md py-md focus:ring-2 focus:ring-primary/20 text-body-md" type="text" value="Alex Chen"/>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant">Email Address</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl px-md py-md focus:ring-2 focus:ring-primary/20 text-body-md" type="email" value="alex.chen@example.com"/>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant">Phone Number</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl px-md py-md focus:ring-2 focus:ring-primary/20 text-body-md" type="tel" value="+1 (555) 000-0000"/>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant">Location</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl px-md py-md focus:ring-2 focus:ring-primary/20 text-body-md" type="text" value="San Francisco, CA"/>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant">Professional Summary</label>
+<textarea class="w-full bg-surface-container-low border-none rounded-xl px-md py-md focus:ring-2 focus:ring-primary/20 text-body-md" rows="4">Innovative software engineer with 8+ years of experience in building scalable web applications. Expert in React and cloud infrastructure. Driven by solving complex architectural challenges.</textarea>
+</div>
+</div>
+<!-- Tab Content: Skills -->
+<div class="tab-content hidden space-y-xl" id="skills">
+<div class="glass-card p-lg rounded-2xl">
+<h3 class="font-headline-sm text-headline-sm mb-md">Core Competencies</h3>
+<div class="flex flex-wrap gap-sm mb-lg">
+<span class="px-md py-xs bg-primary/10 text-primary font-label-md text-label-md rounded-full flex items-center gap-xs">React <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span></span>
+<span class="px-md py-xs bg-primary/10 text-primary font-label-md text-label-md rounded-full flex items-center gap-xs">TypeScript <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span></span>
+<span class="px-md py-xs bg-primary/10 text-primary font-label-md text-label-md rounded-full flex items-center gap-xs">Node.js <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span></span>
+<span class="px-md py-xs bg-primary/10 text-primary font-label-md text-label-md rounded-full flex items-center gap-xs">AWS <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span></span>
+<span class="px-md py-xs bg-primary/10 text-primary font-label-md text-label-md rounded-full flex items-center gap-xs">Kubernetes <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span></span>
+<button class="px-md py-xs border border-dashed border-primary/40 text-primary/60 font-label-md text-label-md rounded-full hover:border-primary hover:text-primary transition-all">+ Add Skill</button>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant">Add more skills</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-xl px-md py-md focus:ring-2 focus:ring-primary/20 text-body-md pr-12" placeholder="e.g. Python, Docker, Figma..." type="text"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-primary/40">search</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="glass-card p-lg rounded-2xl border-l-4 border-l-secondary">
+<h4 class="font-label-md text-label-md text-secondary mb-xs">AI AGENT RECOMMENDATION</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Based on your target jobs, adding "GraphQL" and "Next.js" would increase your profile match by 24%.</p>
+</div>
+<div class="glass-card p-lg rounded-2xl border-l-4 border-l-tertiary">
+<h4 class="font-label-md text-label-md text-tertiary mb-xs">STRENGTH ANALYTICS</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Your Backend Engineering score is in the top 5% of applicants for Senior roles.</p>
+</div>
+</div>
+</div>
+<!-- Tab Content: Subscription -->
+<div class="tab-content hidden space-y-lg" id="subscription">
+<div class="glass-card p-xl rounded-3xl relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-lg">
+<div>
+<div class="px-md py-xs bg-primary text-on-primary font-label-sm text-label-sm rounded-full w-fit mb-md">ACTIVE PLAN</div>
+<h3 class="font-headline-md text-headline-md mb-xs">Pro Plan</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">$29 / month — Next billing on Oct 12, 2024</p>
+</div>
+<div class="flex gap-md">
+<button class="px-lg py-md border border-outline-variant rounded-xl font-label-md text-label-md hover:bg-surface-variant transition-all">Cancel Plan</button>
+<button class="px-lg py-md bg-primary text-on-primary rounded-xl font-label-md text-label-md shadow-lg shadow-primary/20 hover:scale-105 transition-all">Manage Billing</button>
+</div>
+</div>
+<div class="mt-xl grid grid-cols-1 md:grid-cols-3 gap-lg border-t border-outline-variant/30 pt-xl">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">auto_fix_high</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Unlimited Resumes</p>
+<p class="text-xs text-on-surface-variant">AI-tailored for every app</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">bolt</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Priority Search</p>
+<p class="text-xs text-on-surface-variant">Agent runs every 15 mins</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">mail</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Auto-Apply</p>
+<p class="text-xs text-on-surface-variant">50 applications/week</p>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-card p-lg rounded-2xl">
+<h4 class="font-label-md text-label-md mb-md uppercase opacity-60">Payment Method</h4>
+<div class="flex items-center justify-between p-md bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-md">
+<div class="w-12 h-8 bg-inverse-surface rounded flex items-center justify-center">
+<span class="text-[10px] text-white font-bold">VISA</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Visa ending in 4242</p>
+<p class="text-xs text-on-surface-variant">Expires 04/28</p>
+</div>
+</div>
+<button class="text-primary font-label-md text-label-md hover:underline">Edit</button>
+</div>
+</div>
+</div>
+<!-- Footer CTA -->
+<div class="mt-2xl flex justify-end gap-md">
+<button class="px-xl py-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all">Discard Changes</button>
+<button class="px-2xl py-md bg-primary text-on-primary rounded-xl font-headline-sm text-headline-sm shadow-xl shadow-primary/30 hover:shadow-2xl transition-all">Save Profile</button>
+</div>
+</div>
+</main>
+</div>
+<!-- Agent Status (Floating) -->
+<div class="fixed bottom-gutter right-gutter z-50">
+<div class="glass-card pl-md pr-lg py-sm rounded-full flex items-center gap-md shadow-2xl">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant leading-none mb-[2px]">Agent Active</span>
+<span class="font-label-md text-label-md text-primary">Matching 12 new jobs...</span>
+</div>
+<div class="w-2 h-2 bg-primary rounded-full agent-pulse"></div>
+</div>
+</div>
+<footer class="w-full py-xl bg-surface-dim border-t border-outline-variant/20 relative z-10">
+<div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-lg">
+<div class="text-headline-sm font-headline-sm font-bold text-primary">JobPilot AI</div>
+<div class="flex gap-xl">
+<a class="text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm underline underline-offset-4 opacity-80 hover:opacity-100 transition-all" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm underline underline-offset-4 opacity-80 hover:opacity-100 transition-all" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm underline underline-offset-4 opacity-80 hover:opacity-100 transition-all" href="#">Contact</a>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant opacity-60">© 2024 JobPilot AI. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        function switchTab(btn, tabId) {
+            // Update buttons
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active', 'border-b-2', 'border-primary', 'text-primary', 'font-semibold');
+                b.classList.add('text-on-surface-variant');
+            });
+            btn.classList.add('active', 'border-b-2', 'border-primary', 'text-primary', 'font-semibold');
+            btn.classList.remove('text-on-surface-variant');
+
+            // Update content
+            document.querySelectorAll('.tab-content').forEach(c => {
+                c.classList.add('hidden');
+            });
+            document.getElementById(tabId).classList.remove('hidden');
+            
+            // Subtle transition effect
+            const target = document.getElementById(tabId);
+            target.style.opacity = 0;
+            target.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+                target.style.transition = 'all 0.3s ease-out';
+                target.style.opacity = 1;
+                target.style.transform = 'translateY(0)';
+            }, 50);
+        }
+
+        // Initialize micro-interactions
+        document.querySelectorAll('input, textarea').forEach(el => {
+            el.addEventListener('focus', () => {
+                el.parentElement.style.transform = 'translateX(4px)';
+                el.parentElement.style.transition = 'transform 0.2s ease-out';
+            });
+            el.addEventListener('blur', () => {
+                el.parentElement.style.transform = 'translateX(0)';
+            });
+        });
+    </script>
+</body></html>

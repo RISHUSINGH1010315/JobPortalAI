@@ -1,0 +1,155 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum SubscriptionPlan {
+  FREE
+  PRO
+  PREMIUM
+}
+
+enum ApplicationStatus {
+  BOOKMARKED
+  APPLIED
+  INTERVIEWING
+  OFFERED
+  REJECTED
+}
+
+model User {
+  id                   String            @id @default(auto()) @map("_id") @db.ObjectId
+  email                String            @unique
+  name                 String?
+  clerkUserId          String            @unique
+  password             String?           // Hashed credentials password for local db auth
+  role                 Role              @default(USER)
+  createdAt            DateTime          @default(now())
+  updatedAt            DateTime          @updatedAt
+  subscriptionPlan     SubscriptionPlan  @default(FREE)
+  stripeCustomerId     String?           @unique
+  stripeSubscriptionId String?           @unique
+  phone                String?
+  location             String?
+  summary              String?
+  skills               String[]
+  githubUrl            String?
+  linkedinUrl          String?
+  portfolioUrl         String?
+  headline             String?
+  twitterUrl           String?
+  agentActive          Boolean           @default(true)
+  agentTargetRoles     String[]          @default([])
+  agentTargetLocations String[]          @default([])
+  agentMinSalary       String?
+  agentJobTypes        String[]          @default([])
+  agentMatchThreshold  Int               @default(70)
+  agentScanFrequency   String            @default("DAILY")
+  agentAutoApply       Boolean           @default(false)
+  notifyOnMatches      Boolean           @default(true)
+  notifyOnApplications Boolean           @default(true)
+  notifyOnInterviews   Boolean           @default(true)
+
+  resumes              Resume[]
+  jobs                 Job[]
+  applications         Application[]
+  roadmaps             Roadmap[]
+  chatMessages         ChatMessage[]
+  notifications        Notification[]
+}
+
+model Resume {
+  id                 String        @id @default(auto()) @map("_id") @db.ObjectId
+  userId             String        @db.ObjectId
+  user               User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fileName           String
+  fileUrl            String
+  cloudinaryPublicId String
+  parsedContent      Json?         // Parsed resume sections (skills, work history, education)
+  atsScore           Int?
+  feedback           Json?         // Line-by-line quick fixes
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+  applications       Application[]
+}
+
+model Job {
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String        @db.ObjectId
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title        String
+  company      String
+  description  String
+  location     String
+  salaryRange  String?
+  jobType      String?
+  matchedScore Int           @default(0)
+  url          String?
+  createdAt    DateTime      @default(now())
+  applications Application[]
+}
+
+model Application {
+  id              String            @id @default(auto()) @map("_id") @db.ObjectId
+  userId          String            @db.ObjectId
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobId           String            @db.ObjectId
+  job             Job               @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  resumeId        String?           @db.ObjectId
+  resume          Resume?           @relation(fields: [resumeId], references: [id])
+  status          ApplicationStatus @default(BOOKMARKED)
+  coverLetterText String?
+  notes           String?
+  appliedAt       DateTime?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  interviewBrief  InterviewBrief?
+}
+
+model InterviewBrief {
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  applicationId String      @unique @db.ObjectId
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  roleSummary   String
+  prepQuestions Json        // Array of objects { question, type, context, sampleAnswer }
+  tips          Json        // Array of strings
+  createdAt     DateTime    @default(now())
+}
+
+model Roadmap {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId           String   @db.ObjectId
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  targetRole       String
+  steps            Json     // List of steps { title, description, resources, duration }
+  skillsToAcquire  Json     // List of skills
+  createdAt        DateTime @default(now())
+}
+
+model ChatMessage {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  message   String
+  sender    String   // "USER" or "COACH"
+  createdAt DateTime @default(now())
+}
+
+model Notification {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}

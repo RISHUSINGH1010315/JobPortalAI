@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Cover Letter Generator | JobPilot AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .agent-pulse {
+            box-shadow: 0 0 0 0 rgba(0, 88, 190, 0.4);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 88, 190, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 88, 190, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 88, 190, 0); }
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#424754",
+                        "on-primary-fixed": "#001a42",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "surface-container-highest": "#dae2fd",
+                        "tertiary-fixed": "#71f8e4",
+                        "surface-bright": "#faf8ff",
+                        "on-secondary-container": "#fffbff",
+                        "surface-container-high": "#e2e7ff",
+                        "on-tertiary-fixed": "#00201c",
+                        "primary-fixed": "#d8e2ff",
+                        "error-container": "#ffdad6",
+                        "primary": "#0058be",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-surface": "#131b2e",
+                        "tertiary": "#00685d",
+                        "on-secondary": "#ffffff",
+                        "background": "#faf8ff",
+                        "inverse-primary": "#adc6ff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#23005c",
+                        "primary-container": "#2170e4",
+                        "secondary": "#6b38d4",
+                        "on-background": "#131b2e",
+                        "surface-variant": "#dae2fd",
+                        "surface-tint": "#005ac2",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#faf8ff",
+                        "on-tertiary-container": "#f4fffb",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#d2d9f4",
+                        "surface-container": "#eaedff",
+                        "secondary-container": "#8455ef",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#008376",
+                        "inverse-surface": "#283044",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "outline": "#727785",
+                        "outline-variant": "#c2c6d6",
+                        "secondary-fixed": "#e9ddff",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-primary-container": "#fefcff",
+                        "surface-container-low": "#f2f3ff",
+                        "inverse-on-surface": "#eef0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "xl": "48px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "2xl": "80px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "label-sm": ["Geist"],
+                        "headline-lg-mobile": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+<div class="flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="text-headline-md font-headline-md font-bold text-primary">JobPilot AI</span>
+</div>
+<div class="hidden md:flex items-center space-x-lg">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Features</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Pricing</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">About</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">Login</button>
+<button class="bg-primary text-on-primary px-lg py-sm rounded-lg font-label-md text-label-md shadow-md hover:bg-primary-container transition-all active:scale-95">Get Started</button>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Hidden on Mobile) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant/50 flex flex-col p-md space-y-sm pt-20 hidden lg:flex">
+<div class="px-sm py-md">
+<div class="flex items-center gap-3 mb-xl">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Alex Chen</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Senior Engineer</p>
+</div>
+</div>
+<nav class="space-y-sm">
+<a class="flex items-center gap-3 p-md text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-label-md text-label-md">Jobs</span>
+</a>
+<a class="flex items-center gap-3 p-md bg-primary-container text-on-primary-container font-semibold rounded-lg translate-x-1" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-md text-label-md">Resume</span>
+</a>
+<a class="flex items-center gap-3 p-md text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">view_kanban</span>
+<span class="font-label-md text-label-md">Tracker</span>
+</a>
+<a class="flex items-center gap-3 p-md text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label-md text-label-md">Coach</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto space-y-sm border-t border-outline-variant/30 pt-md">
+<a class="flex items-center gap-3 p-md text-on-surface-variant hover:bg-surface-variant/50 rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 p-md text-on-surface-variant hover:bg-surface-variant/50 rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="lg:ml-64 pt-24 px-6 md:px-12 pb-12 max-w-7xl mx-auto">
+<!-- Header & Agent Status -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-xl gap-6">
+<div>
+<h1 class="font-headline-lg text-headline-lg mb-2">AI Cover Letter Generator</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Draft a personalized, high-impact cover letter in seconds.</p>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-high px-4 py-2 rounded-full border border-outline-variant/30">
+<div class="w-2.5 h-2.5 rounded-full bg-primary agent-pulse"></div>
+<span class="font-label-md text-label-md text-primary font-semibold">Agent: Analyzing Job Context</span>
+</div>
+</header>
+<!-- Tooling Layout: Bento Grid Style -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-lg items-start">
+<!-- Left: Input Controls (Col 5) -->
+<section class="xl:col-span-5 space-y-lg">
+<div class="bg-white border border-outline-variant rounded-xl p-6 shadow-sm">
+<div class="flex items-center gap-2 mb-lg">
+<span class="material-symbols-outlined text-primary">edit_note</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Input Details</h3>
+</div>
+<div class="space-y-md">
+<div>
+<label class="block font-label-md text-label-md mb-2 text-on-surface">Job Description</label>
+<textarea class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-md text-body-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all placeholder:text-on-surface-variant/50" placeholder="Paste the job requirements here..." rows="8"></textarea>
+</div>
+<div>
+<label class="block font-label-md text-label-md mb-2 text-on-surface">Key Points to Highlight</label>
+<div class="space-y-2">
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-md pr-12 text-body-sm focus:ring-2 focus:ring-primary/20 outline-none" placeholder="e.g., Lead developer for 3 years..." type="text"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-primary">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+</div>
+<div class="flex flex-wrap gap-2 mt-sm">
+<span class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full text-label-sm font-label-sm flex items-center gap-1">
+                                        Backend Architecture <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</span>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full text-label-sm font-label-sm flex items-center gap-1">
+                                        Team Leadership <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</span>
+</div>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md mb-2 text-on-surface">Tone of Voice</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2 border border-primary bg-primary/5 text-primary rounded-lg text-label-sm font-semibold">Professional</button>
+<button class="py-2 border border-outline-variant text-on-surface-variant hover:bg-surface-container-high rounded-lg text-label-sm">Creative</button>
+<button class="py-2 border border-outline-variant text-on-surface-variant hover:bg-surface-container-high rounded-lg text-label-sm">Confident</button>
+</div>
+</div>
+<button class="w-full mt-lg bg-primary text-on-primary py-4 rounded-xl font-headline-sm flex items-center justify-center gap-3 shadow-lg hover:shadow-primary/20 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">auto_fix_high</span>
+                            Generate Masterpiece
+                        </button>
+</div>
+</div>
+<!-- Small Tip Card -->
+<div class="bg-secondary-container/10 border border-secondary-container/20 rounded-xl p-md flex gap-4">
+<span class="material-symbols-outlined text-secondary">lightbulb</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Pro Tip</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Adding specific metrics (e.g., "Increased sales by 20%") helps the AI write a much stronger opening statement.</p>
+</div>
+</div>
+</section>
+<!-- Right: AI Output (Col 7) -->
+<section class="xl:col-span-7 h-full">
+<div class="bg-white border border-outline-variant rounded-xl shadow-lg flex flex-col h-[800px] overflow-hidden">
+<!-- Editor Toolbar -->
+<div class="bg-surface-container-low border-b border-outline-variant/30 p-md flex items-center justify-between overflow-x-auto whitespace-nowrap">
+<div class="flex items-center gap-1">
+<button class="p-2 hover:bg-surface-variant rounded-md transition-colors"><span class="material-symbols-outlined">format_bold</span></button>
+<button class="p-2 hover:bg-surface-variant rounded-md transition-colors"><span class="material-symbols-outlined">format_italic</span></button>
+<button class="p-2 hover:bg-surface-variant rounded-md transition-colors"><span class="material-symbols-outlined">format_list_bulleted</span></button>
+<div class="h-6 w-px bg-outline-variant mx-2"></div>
+<button class="p-2 hover:bg-surface-variant rounded-md transition-colors"><span class="material-symbols-outlined">undo</span></button>
+<button class="p-2 hover:bg-surface-variant rounded-md transition-colors"><span class="material-symbols-outlined">redo</span></button>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-high rounded-lg text-label-sm font-semibold text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+                                Re-generate
+                            </button>
+<button class="flex items-center gap-2 px-3 py-1.5 bg-primary text-on-primary rounded-lg text-label-sm font-semibold shadow-sm hover:brightness-110">
+<span class="material-symbols-outlined text-[18px]">ios_share</span>
+                                Export
+                            </button>
+</div>
+</div>
+<!-- Rich Text Surface -->
+<div class="flex-1 p-xl overflow-y-auto glass-panel relative group">
+<!-- Watermark/Background Shimmer when generating -->
+<div class="absolute inset-0 shimmer opacity-0 group-hover:opacity-10 pointer-events-none transition-opacity duration-700"></div>
+<div class="max-w-2xl mx-auto space-y-6 text-on-surface font-body-lg leading-relaxed">
+<p class="font-bold text-headline-sm">Dear Hiring Manager at Quantum Systems,</p>
+<p>I am writing to express my enthusiastic interest in the Senior Full-Stack Engineer position at Quantum Systems, as advertised on LinkedIn. With over eight years of experience specializing in high-performance React architectures and scalable Node.js backends, I have long admired Quantum Systems’ commitment to pushing the boundaries of edge computing.</p>
+<p>Throughout my career, I have consistently focused on building systems that are not only robust but also highly efficient. In my current role at TechStream Labs, I spearheaded the transition of our legacy monolith to a micro-frontend architecture, which reduced initial load times by 40% and enabled our development teams to ship features twice as fast. This experience aligns perfectly with your requirement for an engineer who can architect scalable solutions while mentoring cross-functional teams.</p>
+<p>What particularly excites me about Quantum Systems is your recent initiative in AI-driven latency optimization. Having recently completed a masterclass in autonomous system design, I am eager to apply my expertise in state management and real-time data streaming to help your team achieve its upcoming roadmap goals.</p>
+<p>I would welcome the opportunity to discuss how my technical leadership and passion for performance optimization can contribute to the continued success of Quantum Systems. Thank you for your time and consideration.</p>
+<p class="pt-8">Sincerely,<br/><span class="font-bold text-primary">Alex Chen</span></p>
+</div>
+</div>
+<!-- Bottom Status Bar -->
+<div class="bg-surface-container-low border-t border-outline-variant/30 p-sm px-lg flex items-center justify-between">
+<span class="text-label-sm text-on-surface-variant">342 words | 2,150 characters</span>
+<div class="flex items-center gap-2">
+<span class="text-label-sm text-on-surface-variant">ATS Score:</span>
+<div class="w-32 h-1.5 bg-outline-variant/30 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full w-[92%]"></div>
+</div>
+<span class="text-label-sm font-bold text-tertiary">92%</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Secondary Sections (Asymmetric Layout) -->
+<section class="mt-2xl grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="bg-surface-container-high/40 border border-outline-variant/20 rounded-xl p-lg col-span-1 md:col-span-2">
+<h4 class="font-headline-sm text-headline-sm mb-4">Historical Performance</h4>
+<div class="flex flex-col sm:flex-row gap-8 items-center">
+<div class="relative w-32 h-32 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-variant" cx="64" cy="64" fill="transparent" r="56" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary transition-all duration-1000" cx="64" cy="64" fill="transparent" r="56" stroke="currentColor" stroke-dasharray="351.85" stroke-dashoffset="35.18" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-headline-md font-bold text-on-surface">12</span>
+<span class="text-label-sm text-on-surface-variant">Interviews</span>
+</div>
+</div>
+<div class="flex-1 space-y-md">
+<p class="font-body-md text-on-surface-variant">Your AI-generated letters have a <span class="font-bold text-on-surface">45% higher response rate</span> than industry benchmarks. Keep focusing on these "Architecture" keywords for best results.</p>
+<div class="flex gap-4">
+<div class="flex flex-col">
+<span class="text-headline-sm font-bold text-primary">89%</span>
+<span class="text-label-sm text-on-surface-variant">Keyword Match</span>
+</div>
+<div class="flex flex-col">
+<span class="text-headline-sm font-bold text-secondary">2.4s</span>
+<span class="text-label-sm text-on-surface-variant">Avg. Gen Time</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-xl group cursor-pointer h-full min-h-[240px]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A futuristic workspace featuring a dual monitor setup displaying complex code and data visualizations. The environment is illuminated by soft, cool-toned blue and purple ambient lighting, creating a high-tech, productive atmosphere. In the background, a large window reveals a blurred nighttime cityscape, emphasizing a premium and elite software engineering professional setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCck_viamRBQ9mP_Xp2QPgF1rXnEj6WpdYifmqDO2lz9RIBrrg4Xq7KmGSdSp0yU-b_NzpGM2eu2z3h_ciJZ8-2OB4ZytdxlhrPcyMWCp7OcM-b6sRZN-63FTVBmrrp-6FAFwiQKWiiqbF5NzXlSZWkXgg5HVTjG2vSBc5xZLhdM-0h7sA6mq_DCWxwXIuQNGdzIpRNEyXRLQXxal689KJe_65QGhUgossTXnjoygx8AjR7Gd1yxXE7F009n_kHa0eJopre-pKeY0I"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent flex flex-col justify-end p-lg">
+<p class="text-on-primary font-headline-sm">Master the Interview</p>
+<p class="text-on-primary/80 text-body-sm">Learn how to talk about the points JobPilot AI generated for you.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-dim border-t border-outline-variant/20 w-full py-xl">
+<div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col gap-2">
+<span class="text-headline-sm font-headline-sm font-bold text-primary">JobPilot AI</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant opacity-80">© 2024 JobPilot AI. All rights reserved.</span>
+</div>
+<div class="flex gap-lg">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface underline underline-offset-4 opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface underline underline-offset-4 opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface underline underline-offset-4 opacity-80 hover:opacity-100" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<!-- FAB (Suppressed for this task-focused details screen as per rules) -->
+<script>
+        // Simple Micro-interaction for re-generation effect
+        document.querySelectorAll('button').forEach(btn => {
+            if (btn.innerText.includes('Generate') || btn.innerText.includes('Re-generate')) {
+                btn.addEventListener('click', () => {
+                    const editor = document.querySelector('.glass-panel');
+                    editor.style.opacity = '0.5';
+                    editor.classList.add('shimmer');
+                    
+                    const statusDot = document.querySelector('.agent-pulse');
+                    statusDot.style.backgroundColor = '#6b38d4'; // Change to Purple for thinking
+                    
+                    setTimeout(() => {
+                        editor.style.opacity = '1';
+                        editor.classList.remove('shimmer');
+                        statusDot.style.backgroundColor = '#0058be'; // Back to Blue
+                    }, 1500);
+                });
+            }
+        });
+    </script>
+</body></html>

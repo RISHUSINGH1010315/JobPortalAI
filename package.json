@@ -1,0 +1,32 @@
+{
+  "name": "jobpilot-ai",
+  "version": "1.0.0",
+  "description": "JobPilot AI - Autonomous Job Search Agent Monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev --workspace=apps/api",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
+    "build:types": "npm run build --workspace=packages/types",
+    "build:shared": "npm run build --workspace=packages/shared",
+    "build:database": "npm run build --workspace=packages/database",
+    "build:ai": "npm run build --workspace=packages/ai",
+    "build:ui": "npm run build --workspace=packages/ui",
+    "build:packages": "npm run build:types && npm run build:shared && npm run build:database && npm run build:ai",
+    "build:api": "npm run build --workspace=apps/api",
+    "build:web": "npm run build --workspace=apps/web",
+    "build": "npm run build:packages && npm run build:api && npm run build:web",
+    "db:generate": "npm run generate --workspace=packages/database",
+    "db:push": "npm run db:push --workspace=packages/database",
+    "db:seed": "npm run seed --workspace=packages/database",
+    "db:studio": "npm run studio --workspace=packages/database"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3"
+  }
+}

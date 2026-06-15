@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Coach - JobPilot AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Geist:wght@100..900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#424754",
+                    "on-primary-fixed": "#001a42",
+                    "tertiary-fixed-dim": "#4fdbc8",
+                    "surface-container-highest": "#dae2fd",
+                    "tertiary-fixed": "#71f8e4",
+                    "surface-bright": "#faf8ff",
+                    "on-secondary-container": "#fffbff",
+                    "surface-container-high": "#e2e7ff",
+                    "on-tertiary-fixed": "#00201c",
+                    "primary-fixed": "#d8e2ff",
+                    "error-container": "#ffdad6",
+                    "primary": "#0058be",
+                    "primary-fixed-dim": "#adc6ff",
+                    "on-surface": "#131b2e",
+                    "tertiary": "#00685d",
+                    "on-secondary": "#ffffff",
+                    "background": "#faf8ff",
+                    "inverse-primary": "#adc6ff",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#23005c",
+                    "primary-container": "#2170e4",
+                    "secondary": "#6b38d4",
+                    "on-background": "#131b2e",
+                    "surface-variant": "#dae2fd",
+                    "surface-tint": "#005ac2",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#faf8ff",
+                    "on-tertiary-container": "#f4fffb",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#d2d9f4",
+                    "surface-container": "#eaedff",
+                    "secondary-container": "#8455ef",
+                    "on-primary-fixed-variant": "#004395",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#008376",
+                    "inverse-surface": "#283044",
+                    "on-tertiary-fixed-variant": "#005048",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "outline": "#727785",
+                    "outline-variant": "#c2c6d6",
+                    "secondary-fixed": "#e9ddff",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "on-primary-container": "#fefcff",
+                    "surface-container-low": "#f2f3ff",
+                    "inverse-on-surface": "#eef0ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "unit": "4px",
+                    "gutter": "24px",
+                    "container-max": "1200px",
+                    "xl": "48px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "2xl": "80px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Geist"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Geist"],
+                    "headline-lg": ["Geist"],
+                    "headline-md": ["Geist"],
+                    "label-sm": ["Geist"],
+                    "headline-lg-mobile": ["Geist"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .message-bubble-ai {
+            border-bottom-left-radius: 4px;
+        }
+        .message-bubble-user {
+            border-bottom-right-radius: 4px;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .agent-pulse {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.5; }
+            50% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container h-screen flex overflow-hidden">
+<!-- SideNavBar (from Shared Components JSON) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low dark:bg-inverse-surface border-r border-outline-variant/50 flex flex-col p-md space-y-sm z-50">
+<div class="mb-lg px-xs flex items-center gap-md">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">JobPilot AI</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Dashboard</p>
+</div>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-label-md text-label-md">Jobs</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-md text-label-md">Resume</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">view_kanban</span>
+<span class="font-label-md text-label-md">Tracker</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-primary-container text-on-primary-container font-semibold rounded-lg translate-x-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="font-label-md text-label-md">Coach</span>
+</a>
+</nav>
+<div class="mt-auto space-y-xs pt-lg border-t border-outline-variant/30">
+<button class="w-full flex items-center justify-center gap-sm bg-primary text-on-primary py-sm rounded-xl font-label-md mb-md transition-transform active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                New Search
+            </button>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex flex-1 h-full relative overflow-hidden bg-surface">
+<!-- Left Sub-Sidebar: Chat History & Topics -->
+<aside class="w-80 h-full border-r border-outline-variant/30 flex flex-col bg-surface-container-lowest">
+<div class="p-lg">
+<h2 class="font-headline-sm text-headline-sm font-semibold mb-lg">Chat History</h2>
+<div class="space-y-md">
+<div class="group cursor-pointer">
+<div class="p-md rounded-xl hover:bg-surface-container-low transition-colors border border-transparent hover:border-outline-variant/30">
+<p class="font-label-md text-on-surface font-semibold truncate">Google L5 Mock Interview</p>
+<div class="flex items-center gap-sm mt-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant/60">2 hours ago</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant/50"></span>
+<span class="font-label-sm text-label-sm text-secondary">Tech</span>
+</div>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="p-md rounded-xl bg-surface-container-low border border-primary/20">
+<p class="font-label-md text-on-surface font-semibold truncate">Salary Negotiation Strategy</p>
+<div class="flex items-center gap-sm mt-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant/60">Yesterday</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant/50"></span>
+<span class="font-label-sm text-label-sm text-primary">Negotiation</span>
+</div>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="p-md rounded-xl hover:bg-surface-container-low transition-colors border border-transparent hover:border-outline-variant/30">
+<p class="font-label-md text-on-surface font-semibold truncate">Resume Review: Meta</p>
+<div class="flex items-center gap-sm mt-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant/60">3 days ago</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant/50"></span>
+<span class="font-label-sm text-label-sm text-tertiary">Review</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-2xl">
+<h3 class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant/60 mb-md">Trending Topics</h3>
+<div class="flex flex-wrap gap-sm">
+<span class="px-md py-xs bg-secondary-fixed text-on-secondary-fixed-variant rounded-full font-label-sm cursor-pointer hover:bg-secondary-fixed-dim transition-colors">Equity 101</span>
+<span class="px-md py-xs bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full font-label-sm cursor-pointer hover:bg-tertiary-fixed-dim transition-colors">System Design</span>
+<span class="px-md py-xs bg-surface-variant text-on-surface-variant rounded-full font-label-sm cursor-pointer hover:bg-outline-variant/30 transition-colors">FAANG Roadmap</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Center: Chat Window -->
+<section class="flex-1 flex flex-col h-full bg-surface-container-low/30">
+<!-- Header Status -->
+<header class="h-16 px-lg flex items-center justify-between border-b border-outline-variant/20 bg-surface/50 backdrop-blur-md">
+<div class="flex items-center gap-md">
+<div class="relative">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-[18px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div class="absolute -bottom-1 -right-1 w-3 h-3 bg-tertiary rounded-full border-2 border-surface agent-pulse"></div>
+</div>
+<div>
+<p class="font-label-md text-on-surface font-bold">JobPilot AI Career Coach</p>
+<p class="font-label-sm text-label-sm text-tertiary flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                            Analyzing market data for Software Engineer roles
+                        </p>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-sm text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:bg-surface-variant/50 rounded-lg transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Messages Area -->
+<div class="flex-1 overflow-y-auto p-lg space-y-lg no-scrollbar">
+<!-- AI Message -->
+<div class="flex gap-lg max-w-[85%]">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex-shrink-0 flex items-center justify-center text-on-primary-container shadow-sm">
+<span class="material-symbols-outlined">smart_toy</span>
+</div>
+<div class="space-y-sm">
+<div class="glass-panel p-lg rounded-2xl message-bubble-ai border border-outline-variant/20 shadow-sm">
+<p class="font-body-md text-on-surface">Hello Alex! Based on your recent application history, I've analyzed that your current offer from <strong>Stripe</strong> is approximately 12% below the 75th percentile for L4 Engineers in San Francisco. Would you like to draft a negotiation response focusing on the equity component?</p>
+</div>
+<p class="font-label-sm text-on-surface-variant/50 px-xs">Coach • 10:24 AM</p>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex gap-lg max-w-[85%] ml-auto flex-row-reverse">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex-shrink-0 flex items-center justify-center text-primary overflow-hidden border border-outline-variant/30">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGCMkypF61392kpvF4_KvwMIx43MyhDJGJ2hsacKIrKJxKSSO1pZ8iPEc0zxMA4YijHSv-nrG8_S9ukI1LM5rirHCzbzuNkiLoAVI5z1GylBOnMsUOms8VRZC8-5_fadIcOYFCnIj6k17WzGICcv37ANGLdOaWXMQtRz6UTeMeyf2n9_3NlA2YbxyPHO2ANfhgLwRgtSMuchDLWB40hvbH1rxW-YBuLyFB-H1hTdD12UIZt7jfBC_tXu0xQCdo1xUtqjCFj9XDx0o"/>
+</div>
+<div class="space-y-sm text-right">
+<div class="bg-primary p-lg rounded-2xl message-bubble-user shadow-md">
+<p class="font-body-md text-on-primary text-left">Yes, please. I also have a competing offer from a Series C startup with more stock options. How should I weight those against Stripe's RSU package?</p>
+</div>
+<p class="font-label-sm text-on-surface-variant/50 px-xs">Alex • 10:26 AM</p>
+</div>
+</div>
+<!-- AI Message with Agent Status Indicator -->
+<div class="flex gap-lg max-w-[85%]">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex-shrink-0 flex items-center justify-center text-on-primary-container shadow-sm">
+<span class="material-symbols-outlined">smart_toy</span>
+</div>
+<div class="space-y-sm">
+<div class="glass-panel p-lg rounded-2xl message-bubble-ai border border-outline-variant/20 shadow-sm">
+<p class="font-body-md text-on-surface mb-md">Comparing public RSUs to private stock options requires a risk-adjusted discount. I'm currently running a valuation simulation based on the startup's last funding round and projected exit timelines...</p>
+<div class="p-md rounded-xl bg-surface-container border border-outline-variant/30 flex items-center gap-md">
+<div class="flex gap-xs">
+<span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+<span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse" style="animation-delay: 0.2s"></span>
+<span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse" style="animation-delay: 0.4s"></span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Agent: Calculating Startup Valuation Risk Model</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Input & Prompts Section -->
+<footer class="p-lg pt-0">
+<!-- Suggested Prompts -->
+<div class="flex items-center gap-sm mb-md overflow-x-auto no-scrollbar pb-xs">
+<button class="whitespace-nowrap px-md py-sm rounded-xl border border-outline-variant/50 bg-surface hover:bg-surface-container-low transition-colors font-label-md text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">payments</span>
+                        Salary negotiation tips
+                    </button>
+<button class="whitespace-nowrap px-md py-sm rounded-xl border border-outline-variant/50 bg-surface hover:bg-surface-container-low transition-colors font-label-md text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">description</span>
+                        Review my resume for Google
+                    </button>
+<button class="whitespace-nowrap px-md py-sm rounded-xl border border-outline-variant/50 bg-surface hover:bg-surface-container-low transition-colors font-label-md text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">psychology</span>
+                        Behavioral interview prep
+                    </button>
+</div>
+<!-- Chat Input -->
+<div class="relative group">
+<div class="absolute inset-0 bg-primary/5 rounded-2xl blur-xl group-focus-within:bg-primary/10 transition-colors"></div>
+<div class="relative flex items-center bg-surface border-2 border-outline-variant/30 rounded-2xl p-md focus-within:border-primary transition-all shadow-lg shadow-black/5">
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<textarea class="flex-1 bg-transparent border-none focus:ring-0 font-body-md text-on-surface resize-none px-md" placeholder="Ask your AI Career Coach anything..." rows="1"></textarea>
+<div class="flex items-center gap-sm">
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">mic</span>
+</button>
+<button class="bg-primary text-on-primary p-md rounded-xl hover:bg-primary-container transition-all active:scale-95 shadow-md shadow-primary/20">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+</footer>
+</section>
+<!-- Right Sidebar: Career Advice Cards -->
+<aside class="w-80 h-full bg-surface-container-lowest border-l border-outline-variant/30 overflow-y-auto p-lg no-scrollbar">
+<h3 class="font-headline-sm text-headline-sm font-semibold mb-lg">Coach Insights</h3>
+<div class="space-y-lg">
+<!-- Market Value Card -->
+<div class="p-lg rounded-2xl bg-white border border-outline-variant/30 shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-lg opacity-10">
+<span class="material-symbols-outlined text-7xl">trending_up</span>
+</div>
+<div class="relative">
+<div class="flex items-center gap-sm text-primary mb-sm">
+<span class="material-symbols-outlined text-[20px]">insights</span>
+<span class="font-label-sm">Market Pulse</span>
+</div>
+<h4 class="font-label-md font-bold text-on-surface mb-xs">Your Current Value</h4>
+<p class="font-headline-md text-headline-md text-on-surface">$185k - $210k</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant/80 mt-md">Up 4.2% since last month in the Seattle/SF regions for React/Node.js specialists.</p>
+</div>
+</div>
+<!-- Learning Path Card -->
+<div class="p-lg rounded-2xl bg-surface-container-high border border-outline-variant/20 shadow-sm">
+<div class="flex items-center justify-between mb-md">
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[20px]">school</span>
+<span class="font-label-sm">Skill Gap</span>
+</div>
+<span class="font-label-sm text-on-surface-variant">70% Match</span>
+</div>
+<h4 class="font-label-md font-bold text-on-surface mb-md">Recommended Focus</h4>
+<ul class="space-y-sm">
+<li class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-tertiary text-[18px]">check_circle</span>
+<span class="font-body-sm text-body-sm">Distributed Systems</span>
+</li>
+<li class="flex items-center gap-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant ml-2"></span>
+<span class="font-body-sm text-body-sm">Next.js 14 App Router</span>
+</li>
+<li class="flex items-center gap-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant ml-2"></span>
+<span class="font-body-sm text-body-sm">System Design (Latency)</span>
+</li>
+</ul>
+<button class="w-full mt-lg py-sm rounded-xl border border-secondary text-secondary font-label-md hover:bg-secondary/5 transition-colors">
+                        View Full Path
+                    </button>
+</div>
+<!-- Resource Library -->
+<div>
+<h4 class="font-label-md font-bold text-on-surface mb-md">Top Resources</h4>
+<div class="space-y-sm">
+<a class="block p-md rounded-xl bg-surface hover:border-primary border border-outline-variant/30 transition-all group" href="#">
+<div class="flex items-start gap-md">
+<div class="w-10 h-10 rounded-lg bg-red-50 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-red-500">picture_as_pdf</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface font-semibold group-hover:text-primary transition-colors">Negotiation Guide 2024</p>
+<p class="font-label-sm text-on-surface-variant">1.2 MB • PDF</p>
+</div>
+</div>
+</a>
+<a class="block p-md rounded-xl bg-surface hover:border-primary border border-outline-variant/30 transition-all group" href="#">
+<div class="flex items-start gap-md">
+<div class="w-10 h-10 rounded-lg bg-blue-50 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-500">play_circle</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface font-semibold group-hover:text-primary transition-colors">Behavioral Interview Prep</p>
+<p class="font-label-sm text-on-surface-variant">Video • 12 mins</p>
+</div>
+</div>
+</a>
+</div>
+</div>
+<!-- Ad/CTA Premium -->
+<div class="p-lg rounded-2xl bg-gradient-to-br from-primary to-secondary text-on-primary shadow-xl shadow-primary/20 relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+<div class="relative">
+<h4 class="font-headline-sm text-headline-sm font-bold mb-xs">Go Premium</h4>
+<p class="font-body-sm text-body-sm text-white/80 mb-md">Unlock direct access to human recruiters and real-time salary data.</p>
+<button class="w-full py-md bg-white text-primary rounded-xl font-bold transition-transform active:scale-95">
+                            Upgrade Now
+                        </button>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<script>
+        // Micro-interactions for the chat
+        const textarea = document.querySelector('textarea');
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+            if (this.scrollHeight > 200) {
+                this.style.overflowY = 'auto';
+            } else {
+                this.style.overflowY = 'hidden';
+            }
+        });
+
+        // Simple scroll to bottom on load
+        const messageArea = document.querySelector('.overflow-y-auto.flex-1');
+        messageArea.scrollTop = messageArea.scrollHeight;
+
+        // Hover animations for history items
+        document.querySelectorAll('.group.cursor-pointer').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.querySelector('.rounded-xl').classList.add('shadow-sm');
+            });
+            item.addEventListener('mouseleave', () => {
+                item.querySelector('.rounded-xl').classList.remove('shadow-sm');
+            });
+        });
+    </script>
+</body></html>
