@@ -20,7 +20,7 @@ export default function ResumePage() {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const devUserId = 'dev_user_123';
-  const apiBaseUrl = 'http://localhost:4000/api';
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
   const fetchLatestResume = async () => {
     try {

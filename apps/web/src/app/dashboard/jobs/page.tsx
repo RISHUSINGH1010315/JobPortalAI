@@ -13,7 +13,7 @@ export default function JobsPage() {
   const [isApplying, setIsApplying] = useState(false);
 
   const devUserId = 'dev_user_123';
-  const apiBaseUrl = 'http://localhost:4000/api';
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
   const fetchJobs = async () => {
     setLoading(true);

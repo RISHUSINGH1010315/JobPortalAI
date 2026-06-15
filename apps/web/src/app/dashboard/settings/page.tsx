@@ -56,7 +56,7 @@ export default function SettingsPage() {
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
-  const apiBaseUrl = 'http://localhost:4000/api';
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
   const fetchProfile = async () => {
     setLoading(true);

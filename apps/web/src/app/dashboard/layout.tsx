@@ -7,7 +7,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 function UpgradeTracker({ onUpgradeComplete }: { onUpgradeComplete: () => void }) {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const apiBaseUrl = 'http://localhost:4000/api';
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
   useEffect(() => {
     const token = localStorage.getItem('jobpilot_token');
@@ -57,7 +57,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [isSyncing, setIsSyncing] = useState(false);
   const [authorized, setAuthorized] = useState(false);
 
-  const apiBaseUrl = 'http://localhost:4000/api';
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
   const fetchProfileAndNotifications = async () => {
     const token = localStorage.getItem('jobpilot_token');

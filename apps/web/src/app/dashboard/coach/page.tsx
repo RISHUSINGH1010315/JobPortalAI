@@ -14,7 +14,7 @@ export default function CoachPage() {
   const [sending, setSending] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
 
-  const apiBaseUrl = 'http://localhost:4000/api';
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
   const fetchProfile = async () => {
     try {

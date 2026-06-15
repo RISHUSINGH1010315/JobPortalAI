@@ -11,7 +11,7 @@ function InterviewContent() {
   const [loading, setLoading] = useState(false);
   const [generating, setGenerating] = useState(false);
 
-  const apiBaseUrl = 'http://localhost:4000/api';
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
   const fetchPrepBrief = async () => {
     if (!appId) return;
