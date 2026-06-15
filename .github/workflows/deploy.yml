@@ -34,6 +34,7 @@ jobs:
         env:
           # Bake the API endpoint into the static files at build time
           NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api' }}
+          NEXT_PUBLIC_BASE_PATH: /JobPortalAI
         run: npm run build:web
 
       - name: Deploy to GitHub Pages
