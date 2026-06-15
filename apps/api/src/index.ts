@@ -161,6 +161,10 @@ app.use((err: any, _req: express.Request, res: express.Response, _next: express.
 });
 
 // Start Server
-app.listen(PORT, () => {
-  logger.info(`JobPilot AI backend API is running on port ${PORT}`);
-});
+if (process.env.VERCEL !== '1') {
+  app.listen(PORT, () => {
+    logger.info(`JobPilot AI backend API is running on port ${PORT}`);
+  });
+}
+
+export default app;
